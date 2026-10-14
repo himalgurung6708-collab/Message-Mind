@@ -6,11 +6,16 @@ def vibe_check():
 ]
     name = input("Enter your username. ")
     age = int(input("Enter your age. "))
-    talk = input("What do you wanna talk about? (2 sentences max). ").lower()
-    if "love" in talk:
+    talk = input(f"What do you wanna talk about, {name}? ").lower()
+    positive_count = talk.count("love")
+    negative_count = talk.count("hate")
+    if positive_count > negative_count:
         print(messages[0])
-    elif "hate" in talk:
+    elif negative_count > positive_count:
         print(messages[1])
-    elif "okay" in talk:
+    elif positive_count == 0 and negative_count == 0:
+        print("I do not possess the ability to classify that yet. ")
+    elif positive_count == negative_count:
         print(messages[2])
+    
 vibe_check()
